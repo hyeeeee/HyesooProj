@@ -3,10 +3,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HyesooProj.Infrastructure.Migrations
 {
-    public partial class addcoffeetime : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "FootPrints",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    DateTime = table.Column<DateTime>(nullable: false),
+                    Daily_Name = table.Column<string>(nullable: true),
+                    Daily_DateTime = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FootPrints", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "CoffeeTime",
                 columns: table => new
@@ -37,6 +52,9 @@ namespace HyesooProj.Infrastructure.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CoffeeTime");
+
+            migrationBuilder.DropTable(
+                name: "FootPrints");
         }
     }
 }

@@ -19,6 +19,7 @@ namespace HyesooProj.Infrastructure.Ef
         {
             base.OnModelCreating(modelBuilder);
 
+            //modelBuilder.ApplyConfiguration(new DailyFootPrintConfiguration());
             modelBuilder.ApplyConfiguration(new FootPrintConfiguration());
             modelBuilder.ApplyConfiguration(new CoffeeTimeConfigration());
         }
