@@ -70,10 +70,14 @@ namespace HyesooProj.API.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task Put(string id, [FromBody]string value)
         {
-        }
+            FootPrint footPrint = await this._dbContext.FootPrints.FirstOrDefaultAsync(o => o.Id == id).ConfigureAwait(false);
 
+            footPrint.Name = value;
+
+            await this._dbContext.SaveChangesAsync().ConfigureAwait(false);
+        }
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
